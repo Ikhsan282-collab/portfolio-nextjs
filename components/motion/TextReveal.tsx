@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 
 interface TextRevealProps {
   text: string;
@@ -9,9 +9,10 @@ interface TextRevealProps {
   staggerDelay?: number;
 }
 
-// Membelah teks jadi per-huruf, tiap huruf jadi <motion.span> terpisah
-// supaya bisa dianimasikan satu-satu dengan stagger. Spasi tetap
-// dipertahankan sebagai &nbsp; agar layout kata tidak "menempel".
+// Membelah teks jadi per-huruf, dianimasikan dengan orkestrasi
+// staggerChildren (satu animasi induk mengatur semua anak) dan
+// baru berjalan saat section masuk viewport (whileInView),
+// bukan langsung saat komponen mount.
 export function TextReveal({
   text,
   className,
@@ -19,25 +20,54 @@ export function TextReveal({
   staggerDelay = 0.03,
 }: TextRevealProps) {
   const letters = text.split("");
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return (
+      <span className={className} aria-label={text}>
+        {text}
+      </span>
+    );
+  }
+
+  const container: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        delayChildren: delay,
+        staggerChildren: staggerDelay,
+      },
+    },
+  };
+
+  const child: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+  };
 
   return (
-    <span className={className} aria-label={text}>
+    <motion.span
+      className={className}
+      aria-label={text}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+    >
       {letters.map((letter, index) => (
         <motion.span
           key={`${letter}-${index}`}
           aria-hidden="true"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.4,
-            delay: delay + index * staggerDelay,
-            ease: "easeOut",
-          }}
+          variants={child}
           style={{ display: "inline-block" }}
         >
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}
-    </span>
+    </motion.span>
   );
 }

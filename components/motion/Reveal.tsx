@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface RevealProps {
@@ -16,11 +16,17 @@ export function Reveal({
   direction = "up",
   className,
 }: RevealProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   const offset = {
     up: { y: 24, x: 0 },
     left: { y: 0, x: -24 },
     right: { y: 0, x: 24 },
   }[direction];
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
