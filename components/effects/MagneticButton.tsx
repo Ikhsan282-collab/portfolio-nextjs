@@ -1,10 +1,10 @@
-"use client";
+﻿"use client";
 
-import { useRef, useState, ReactNode } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 interface MagneticButtonProps {
-  children: ReactNode;
+  children: React.ReactNode;
   className?: string;
   strength?: number; // seberapa kuat tarikannya, default 0.3
 }
@@ -15,21 +15,26 @@ export function MagneticButton({
   strength = 0.3,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  // Motion values: update langsung ke style DOM, tidak lewat
+  // React re-render tiap mousemove (beda dari useState yang lama).
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    setOffset({
-      x: (e.clientX - centerX) * strength,
-      y: (e.clientY - centerY) * strength,
-    });
+    x.set((e.clientX - centerX) * strength);
+    y.set((e.clientY - centerY) * strength);
   }
 
   function handleMouseLeave() {
-    setOffset({ x: 0, y: 0 });
+    x.set(0);
+    y.set(0);
   }
 
   return (
@@ -38,8 +43,7 @@ export function MagneticButton({
       className={className}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      animate={{ x: offset.x, y: offset.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      style={{ x: springX, y: springY }}
     >
       {children}
     </motion.div>
