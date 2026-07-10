@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -40,9 +40,9 @@ function FloatingField({
       />
       <label
         htmlFor={id}
-        className="absolute left-4 top-2 text-xs font-bold tracking-[1.5px] text-m-blue-dark transition-all duration-200 pointer-events-none
-          peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-light peer-placeholder-shown:text-body/60
-          peer-focus:top-2 peer-focus:text-xs peer-focus:tracking-[1.5px] peer-focus:font-bold peer-focus:text-m-blue-dark"
+        className="absolute left-4 top-2 text-xs font-bold tracking-[1.5px] text-m-blue-text transition-all duration-200 pointer-events-none
+          peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-light peer-placeholder-shown:text-body-muted
+          peer-focus:top-2 peer-focus:text-xs peer-focus:tracking-[1.5px] peer-focus:font-bold peer-focus:text-m-blue-text"
       >
         {label}
       </label>
@@ -116,7 +116,7 @@ export function Contact() {
     <section id="contact" className="bg-canvas py-24 px-6">
       <div className="max-w-2xl mx-auto">
         <Reveal>
-          <p className="text-sm font-bold tracking-[1.5px] text-m-blue-dark mb-4">
+          <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
             GET IN TOUCH
           </p>
           <h2 className="text-4xl md:text-5xl mb-4">
@@ -156,7 +156,7 @@ export function Contact() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
-                    className="text-m-blue-dark"
+                    className="text-m-blue-text"
                   />
                 </motion.svg>
               </motion.div>
@@ -227,9 +227,9 @@ export function Contact() {
                   />
                   <label
                     htmlFor="message"
-                    className="absolute left-4 top-2 text-xs font-bold tracking-[1.5px] text-m-blue-dark transition-all duration-200 pointer-events-none
-                      peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-light peer-placeholder-shown:text-body/60
-                      peer-focus:top-2 peer-focus:text-xs peer-focus:tracking-[1.5px] peer-focus:font-bold peer-focus:text-m-blue-dark"
+                    className="absolute left-4 top-2 text-xs font-bold tracking-[1.5px] text-m-blue-text transition-all duration-200 pointer-events-none
+                      peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-light peer-placeholder-shown:text-body-muted
+                      peer-focus:top-2 peer-focus:text-xs peer-focus:tracking-[1.5px] peer-focus:font-bold peer-focus:text-m-blue-text"
                   >
                     PESAN
                   </label>

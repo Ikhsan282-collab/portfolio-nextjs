@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 
 interface ProjectThumbnailProps {
   src?: string;
@@ -9,7 +9,7 @@ interface ProjectThumbnailProps {
   objectPosition?: "center" | "top" | "bottom";
 }
 
-// Ambil 2 huruf pertama dari tiap kata judul, maksimal 2 kata —
+// Ambil 2 huruf pertama dari tiap kata judul, maksimal 2 kata â€”
 // dipakai sebagai fallback visual kalau thumbnail belum tersedia.
 function getInitials(title: string) {
   return title
@@ -31,9 +31,11 @@ export function ProjectThumbnail({
   if (!src) {
     return (
       <div
+        role="img"
+        aria-label={alt}
         className={`flex items-center justify-center bg-gradient-to-br from-m-blue-dark/15 to-surface-card ${className}`}
       >
-        <span className="text-3xl font-bold tracking-[2px] text-m-blue-dark/40">
+        <span aria-hidden="true" className="text-3xl font-bold tracking-[2px] text-m-blue-dark/40">
           {getInitials(alt)}
         </span>
       </div>

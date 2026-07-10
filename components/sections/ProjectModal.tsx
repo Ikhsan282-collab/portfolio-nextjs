@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -61,9 +61,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <button
                 onClick={onClose}
                 aria-label="Tutup detail project"
-                className="text-sm font-bold tracking-[1.5px] transition-colors hover:text-m-blue-dark"
+                className="text-sm font-bold tracking-[1.5px] transition-colors hover:text-m-blue-text"
               >
-                TUTUP ✕
+                TUTUP âœ•
               </button>
             </div>
 
@@ -73,7 +73,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             {project.features.length > 0 && (
               <div className="mb-8">
-                <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-dark mb-3">
+                <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-3">
                   FITUR
                 </h4>
                 <ul className="list-disc list-inside space-y-1 text-body font-light">
@@ -85,7 +85,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             )}
 
             <div className="mb-8">
-              <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-dark mb-3">
+              <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-3">
                 TECH STACK
               </h4>
               <div className="flex flex-wrap gap-2">
@@ -101,7 +101,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             <div className="mb-8">
-              <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-dark mb-3">
+              <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-3">
                 PERAN SAYA
               </h4>
               <p className="text-body font-light">{project.role}</p>
@@ -109,7 +109,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             {project.challenges && (
               <div className="mb-8">
-                <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-dark mb-3">
+                <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-3">
                   TANTANGAN & SOLUSI
                 </h4>
                 <p className="text-body font-light mb-2">{project.challenges}</p>

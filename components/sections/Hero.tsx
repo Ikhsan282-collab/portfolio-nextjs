@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/motion/Reveal";
+﻿import { Reveal } from "@/components/motion/Reveal";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { HeroTerminal } from "@/components/motion/HeroTerminal";
 import { CV_PATH, CV_FILENAME } from "@/lib/constants";
@@ -9,7 +9,7 @@ export function Hero() {
       <div className="max-w-[1440px] mx-auto px-6 py-16 w-full grid md:grid-cols-2 gap-12 items-center">
         <div>
           <Reveal direction="left">
-            <p className="text-sm font-bold tracking-[1.5px] text-m-blue-dark mb-4">
+            <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
               WEB DEVELOPER
             </p>
 

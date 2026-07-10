@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
   /* Canvas & Surface */
@@ -19,9 +19,11 @@
   --hairline: #3c3c3c;
   --hairline-strong: #262626;
 
-  /* M Tricolor (brand accent — jangan dipakai sebagai warna tombol/fill) */
+  /* M Tricolor (brand accent â€” jangan dipakai sebagai warna tombol/fill) */
   --m-blue-light: #0066b1;
   --m-blue-dark: #1c69d4;
+  --m-blue-text: #4d8fe0;   /* text-safe, kontras ~6.3:1 */
+  --body-muted: #999999;    /* text-safe, kontras ~7.4:1 */
   --m-red: #e22718;
   --electric-blue: #0653b6;
 
@@ -48,6 +50,8 @@
 
   --color-m-blue-light: var(--m-blue-light);
   --color-m-blue-dark: var(--m-blue-dark);
+  --color-m-blue-text: var(--m-blue-text);
+  --color-body-muted: var(--body-muted);
   --color-m-red: var(--m-red);
   --color-electric-blue: var(--electric-blue);
 
@@ -85,7 +89,7 @@ button {
   letter-spacing: 1.5px;
 }
 
-/* M Stripe Divider — elemen signature, dipakai terbatas di titik penting */
+/* M Stripe Divider â€” elemen signature, dipakai terbatas di titik penting */
 .m-stripe-divider {
   height: 4px;
   background: linear-gradient(
@@ -123,3 +127,15 @@ section[id] {
 .animate-marquee {
   animation: marquee linear infinite;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+

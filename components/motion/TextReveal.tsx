@@ -9,9 +9,9 @@ interface TextRevealProps {
   staggerDelay?: number;
 }
 
-// Dipecah per-kata (bukan per-huruf) supaya jumlah elemen animasi
-// jauh lebih sedikit -- lebih ringan di main thread, tapi visualnya
-// tetap terasa "reveal" yang halus.
+// Teks asli disediakan untuk screen reader lewat elemen sr-only terpisah
+// (bukan aria-label di <span>, karena role "generic" tidak mendukung itu).
+// Versi animasi per-kata ditandai aria-hidden karena murni dekoratif.
 export function TextReveal({
   text,
   className,
@@ -22,11 +22,7 @@ export function TextReveal({
   const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) {
-    return (
-      <span className={className} aria-label={text}>
-        {text}
-      </span>
-    );
+    return <span className={className}>{text}</span>;
   }
 
   const container: Variants = {
@@ -49,25 +45,26 @@ export function TextReveal({
   };
 
   return (
-    <motion.span
-      className={className}
-      aria-label={text}
-      variants={container}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-    >
-      {words.map((word, index) => (
-        <motion.span
-          key={`${word}-${index}`}
-          aria-hidden="true"
-          variants={child}
-          style={{ display: "inline-block" }}
-        >
-          {word}
-          {index < words.length - 1 ? "\u00A0" : ""}
-        </motion.span>
-      ))}
-    </motion.span>
+    <span className={className}>
+      <span className="sr-only">{text}</span>
+      <motion.span
+        aria-hidden="true"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+      >
+        {words.map((word, index) => (
+          <motion.span
+            key={`${word}-${index}`}
+            variants={child}
+            style={{ display: "inline-block" }}
+          >
+            {word}
+            {index < words.length - 1 ? "\u00A0" : ""}
+          </motion.span>
+        ))}
+      </motion.span>
+    </span>
   );
 }

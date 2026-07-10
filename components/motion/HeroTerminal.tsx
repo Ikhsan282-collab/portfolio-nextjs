@@ -176,7 +176,7 @@ export function HeroTerminal() {
         <span className="w-3 h-3 rounded-full bg-red-500" aria-hidden="true" />
         <span className="w-3 h-3 rounded-full bg-yellow-500" aria-hidden="true" />
         <span className="w-3 h-3 rounded-full bg-green-500" aria-hidden="true" />
-        <span className="ml-2 text-xs text-body/60">guest@portfolio: ~</span>
+        <span className="ml-2 text-xs text-body-muted">guest@portfolio: ~</span>
       </div>
 
       <div ref={bodyRef} className="h-72 overflow-y-auto px-4 py-4 space-y-1">
@@ -188,7 +188,7 @@ export function HeroTerminal() {
 
         {booted && (
           <div className="flex items-center gap-2">
-            <span className="text-m-blue-dark">$</span>
+            <span className="text-m-blue-text">$</span>
             <input
               ref={inputRef}
               value={input}

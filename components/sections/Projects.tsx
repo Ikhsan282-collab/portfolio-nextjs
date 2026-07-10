@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { projects } from "@/lib/data/projects";
@@ -19,7 +19,7 @@ export function Projects() {
     <section id="projects" className="bg-canvas py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <p className="text-sm font-bold tracking-[1.5px] text-m-blue-dark mb-4">
+          <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
             MY WORK
           </p>
           <h2 className="text-4xl md:text-5xl mb-16">PROJECTS</h2>

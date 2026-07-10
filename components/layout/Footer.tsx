@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Mail, Briefcase } from "lucide-react";
 import { GithubIcon, LinkedinIcon, InstagramIcon, FacebookIcon } from "@/components/icons/BrandIcons";
@@ -40,7 +40,7 @@ export function Footer() {
 
         <Reveal delay={0.1}>
           <div>
-            <p className="text-xs font-bold tracking-[1.5px] text-m-blue-dark mb-4">
+            <p className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-4">
               NAVIGASI
             </p>
             <ul className="space-y-3">
@@ -64,7 +64,7 @@ export function Footer() {
 
         <Reveal delay={0.2}>
           <div>
-            <p className="text-xs font-bold tracking-[1.5px] text-m-blue-dark mb-4">
+            <p className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-4">
               TERHUBUNG
             </p>
             <ul className="space-y-3">
@@ -80,7 +80,7 @@ export function Footer() {
                     >
                       <span className="flex items-center justify-center w-7 h-7 border border-hairline transition-all duration-300 group-hover/social:border-m-blue-dark group-hover/social:-translate-y-0.5">
                         <Icon
-                          className="w-3.5 h-3.5 transition-colors group-hover/social:text-m-blue-dark"
+                          className="w-3.5 h-3.5 transition-colors group-hover/social:text-m-blue-text"
                           strokeWidth={1.5}
                           aria-hidden="true"
                         />
@@ -99,7 +99,7 @@ export function Footer() {
         <div className="m-stripe-divider max-w-6xl mx-auto mb-8" />
 
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-muted font-light tracking-[0.5px]">
-          <p>© {currentYear} Muhammad Nur Ikhsan. All rights reserved.</p>
+          <p>Â© {currentYear} Muhammad Nur Ikhsan. All rights reserved.</p>
           <p>Built with Next.js & Tailwind CSS</p>
         </div>
       </Reveal>

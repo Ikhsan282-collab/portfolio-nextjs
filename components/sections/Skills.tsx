@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,7 +14,7 @@ export function Skills() {
     <section id="skills" className="bg-canvas py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <p className="text-sm font-bold tracking-[1.5px] text-m-blue-dark mb-4">
+          <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
             WHAT I WORK WITH
           </p>
           <h2 className="text-4xl md:text-5xl mb-16">
@@ -40,7 +40,7 @@ export function Skills() {
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full bg-m-blue-dark/10 flex items-center justify-center">
                           <Icon
-                            className="w-5 h-5 text-m-blue-dark"
+                            className="w-5 h-5 text-m-blue-text"
                             strokeWidth={1.5}
                             aria-hidden="true"
                           />
@@ -63,7 +63,7 @@ export function Skills() {
                             className="flex items-center gap-2.5 text-body font-light text-sm transition-transform duration-300 hover:translate-x-1"
                           >
                             <SkillIcon
-                              className="w-4 h-4 text-m-blue-dark/70 shrink-0"
+                              className="w-4 h-4 text-m-blue-text/70 shrink-0"
                               aria-hidden="true"
                             />
                             {skill.name}
@@ -73,13 +73,13 @@ export function Skills() {
                     </ul>
 
                     {/* Indikator kecil supaya user tahu card ini bisa diklik */}
-                    <span className="mt-4 flex items-center gap-1 text-xs font-bold tracking-[1px] text-m-blue-dark/70">
+                    <span className="mt-4 flex items-center gap-1 text-xs font-bold tracking-[1px] text-m-blue-text/70">
                       {isOpen ? "TUTUP" : "DETAIL"}
                       <motion.span
                         animate={{ rotate: isOpen ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        ↓
+                        â†“
                       </motion.span>
                     </span>
                   </button>

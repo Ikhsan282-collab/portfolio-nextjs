@@ -1,4 +1,4 @@
-import { Project } from "@/lib/types";
+﻿import { Project } from "@/lib/types";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { ProjectThumbnail } from "./ProjectThumbnail";
@@ -25,7 +25,7 @@ export function ProjectCard({ project, onSelect, delay = 0 }: ProjectCardProps) 
           />
 
           <div className="p-6 pt-0">
-            <h3 className="text-lg font-bold mb-2 group-hover:text-m-blue-dark transition-colors">
+            <h3 className="text-lg font-bold mb-2 group-hover:text-m-blue-text transition-colors">
               {project.title}
             </h3>
 
@@ -40,10 +40,10 @@ export function ProjectCard({ project, onSelect, delay = 0 }: ProjectCardProps) 
               ))}
             </div>
 
-            <span className="text-xs font-bold tracking-[1.5px] text-m-blue-dark inline-flex items-center gap-1">
+            <span className="text-xs font-bold tracking-[1.5px] text-m-blue-text inline-flex items-center gap-1">
               LIHAT DETAIL
               <span className="transition-transform duration-300 group-hover:translate-x-1">
-                →
+                â†’
               </span>
             </span>
           </div>

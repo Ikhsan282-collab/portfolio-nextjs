@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -26,13 +26,13 @@ const highlights = [
     icon: Globe,
     text: "Web Development & Laravel",
     detail:
-      "Terbiasa membangun aplikasi full-stack — dari struktur database, REST API, hingga antarmuka yang responsif.",
+      "Terbiasa membangun aplikasi full-stack â€” dari struktur database, REST API, hingga antarmuka yang responsif.",
   },
   {
     icon: Palette,
     text: "UI/UX Enthusiast",
     detail:
-      "Percaya bahwa kode yang bagus harus dibarengi antarmuka yang intuitif — selalu memperhatikan detail spacing, tipografi, dan alur pengguna.",
+      "Percaya bahwa kode yang bagus harus dibarengi antarmuka yang intuitif â€” selalu memperhatikan detail spacing, tipografi, dan alur pengguna.",
   },
 ];
 
@@ -60,7 +60,7 @@ export function About() {
 
         <Reveal direction="right">
           <div>
-            <p className="text-sm font-bold tracking-[1.5px] text-m-blue-dark mb-4">
+            <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
               ABOUT ME
             </p>
             <h2 className="text-4xl md:text-5xl mb-6">
@@ -91,7 +91,7 @@ export function About() {
                       className="w-full flex items-center gap-3 py-3 text-left transition-transform duration-300 hover:translate-x-1"
                     >
                       <Icon
-                        className="w-4 h-4 text-m-blue-dark shrink-0"
+                        className="w-4 h-4 text-m-blue-text shrink-0"
                         strokeWidth={1.5}
                         aria-hidden="true"
                       />
@@ -101,10 +101,10 @@ export function About() {
                       <motion.span
                         animate={{ rotate: isOpen ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
-                        className="text-m-blue-dark text-xs"
+                        className="text-m-blue-text text-xs"
                         aria-hidden="true"
                       >
-                        ↓
+                        â†“
                       </motion.span>
                     </button>
 
