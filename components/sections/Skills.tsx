@@ -79,7 +79,7 @@ export function Skills() {
                         animate={{ rotate: isOpen ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        â†“
+                        ↓
                       </motion.span>
                     </span>
                   </button>

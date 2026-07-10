@@ -104,7 +104,7 @@ export function About() {
                         className="text-m-blue-text text-xs"
                         aria-hidden="true"
                       >
-                        â†“
+                        ↓
                       </motion.span>
                     </button>
 

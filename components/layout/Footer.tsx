@@ -99,7 +99,7 @@ export function Footer() {
         <div className="m-stripe-divider max-w-6xl mx-auto mb-8" />
 
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-muted font-light tracking-[0.5px]">
-          <p>Â© {currentYear} Muhammad Nur Ikhsan. All rights reserved.</p>
+          <p>© {currentYear} Muhammad Nur Ikhsan. All rights reserved.</p>
           <p>Built with Next.js & Tailwind CSS</p>
         </div>
       </Reveal>

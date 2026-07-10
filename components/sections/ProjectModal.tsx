@@ -63,7 +63,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 aria-label="Tutup detail project"
                 className="text-sm font-bold tracking-[1.5px] transition-colors hover:text-m-blue-text"
               >
-                TUTUP âœ•
+                TUTUP ✕
               </button>
             </div>
 
