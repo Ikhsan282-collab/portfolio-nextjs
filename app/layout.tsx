@@ -9,14 +9,14 @@ const SITE_URL = "https://muhammad-nur-ikhsan-swart.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Muhammad Nur Ikhsan — Full Stack Developer",
+    default: "Muhammad Nur Ikhsan — Web Developer",
     template: "%s | Muhammad Nur Ikhsan",
   },
   description:
-    "Portofolio Muhammad Nur Ikhsan, Full Stack Developer yang membangun aplikasi web skalabel, landing page responsif, REST API, dan sistem manajemen bisnis menggunakan Laravel, PHP, MySQL, React, dan Next.js.",
+    "Portofolio Muhammad Nur Ikhsan, Web Developer yang membangun aplikasi web skalabel, landing page responsif, REST API, dan sistem manajemen bisnis menggunakan Laravel, PHP, MySQL, React, dan Next.js.",
   keywords: [
     "Muhammad Nur Ikhsan",
-    "Full Stack Developer",
+    "Web Developer",
     "Web Developer Indonesia",
     "Laravel Developer",
     "React Developer",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: SITE_URL,
     siteName: "Muhammad Nur Ikhsan Portfolio",
-    title: "Muhammad Nur Ikhsan — Full Stack Developer",
+    title: "Muhammad Nur Ikhsan — Web Developer",
     description:
       "Membangun aplikasi web skalabel, landing page responsif, REST API, dan sistem manajemen bisnis dengan Laravel, PHP, MySQL, React, dan Next.js.",
   },
