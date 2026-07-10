@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import "./globals.css";
 // import font, komponen lain yang sudah ada sebelumnya...
 
-const SITE_URL = "https://GANTI-DENGAN-DOMAIN-KAMU.vercel.app";
+const SITE_URL = "https://muhammad-nur-ikhsan-swart.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
