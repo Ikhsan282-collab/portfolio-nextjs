@@ -43,7 +43,7 @@ export function ProjectCard({ project, onSelect, delay = 0 }: ProjectCardProps) 
             <span className="text-xs font-bold tracking-[1.5px] text-m-blue-text inline-flex items-center gap-1">
               LIHAT DETAIL
               <span className="transition-transform duration-300 group-hover:translate-x-1">
-                â†’
+                →
               </span>
             </span>
           </div>

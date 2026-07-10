@@ -30,20 +30,20 @@ const COMMANDS: Record<string, string[]> = {
     "Software Architecture",
   ],
   stack: [
-    "Laravel Â· PHP Â· MySQL",
-    "JavaScript Â· HTML Â· CSS",
-    "React Â· Next.js Â· Tailwind CSS",
+    "Laravel · PHP · MySQL",
+    "JavaScript · HTML · CSS",
+    "React · Next.js · Tailwind CSS",
   ],
   experience: [
     "Programmer @ PT Dcistem Cyber Internasional",
-    "â†’ Company profile, landing page, sistem pemesanan WiFi",
+    "→ Company profile, landing page, sistem pemesanan WiFi",
   ],
-  projects: ["Membuka daftar project...", "â†’ ketik: open projects"],
-  contact: ["Form kontak tersedia di bagian bawah halaman.", "â†’ ketik: open contact"],
+  projects: ["Membuka daftar project...", "→ ketik: open projects"],
+  contact: ["Form kontak tersedia di bagian bawah halaman.", "→ ketik: open contact"],
 };
 
 const EASTER_EGGS: Record<string, string[]> = {
-  "sudo hire-me": ["Permission granted. âœ…", "Redirecting recruiter to #contact..."],
+  "sudo hire-me": ["Permission granted. ✅", "Redirecting recruiter to #contact..."],
   "rm -rf bugs": ["Nice try. Bugs are permanent, like this joke."],
 };
 
@@ -117,12 +117,12 @@ export function HeroTerminal() {
     }
     if (command === "open projects") {
       document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-      setLines((prev) => [...prev, { id: nextId(), type: "output", text: "â†’ scrolling to #projects" }]);
+      setLines((prev) => [...prev, { id: nextId(), type: "output", text: "→ scrolling to #projects" }]);
       return;
     }
     if (command === "open contact") {
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-      setLines((prev) => [...prev, { id: nextId(), type: "output", text: "â†’ scrolling to #contact" }]);
+      setLines((prev) => [...prev, { id: nextId(), type: "output", text: "→ scrolling to #contact" }]);
       return;
     }
 
