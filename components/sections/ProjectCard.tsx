@@ -7,11 +7,14 @@ type ProjectCardProps = {
   project: Project;
   onSelect: (project: Project) => void;
   delay?: number;
+  index?: number;
 };
 
-export function ProjectCard({ project, onSelect, delay = 0 }: ProjectCardProps) {
+export function ProjectCard({ project, onSelect, delay = 0, index = 0 }: ProjectCardProps) {
+  const direction = index % 2 === 0 ? "left" : "right";
+
   return (
-    <Reveal delay={delay}>
+    <Reveal delay={delay} direction={direction}>
       <TiltCard className="overflow-hidden">
         <button
           onClick={() => onSelect(project)}
