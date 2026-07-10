@@ -21,8 +21,8 @@ const COMMANDS: Record<string, string[]> = {
     "  contact      cara menghubungi saya",
     "  clear        bersihkan layar",
   ],
-  whoami: ["muhammad-nur-ikhsan", "Web Developer â€” Laravel & Modern Frontend"],
-  role: ["Fresh Graduate â€” Teknik Informatika", "STMIK Mardira Indonesia"],
+  whoami: ["muhammad-nur-ikhsan", "Web Developer — Laravel & Modern Frontend"],
+  role: ["Fresh Graduate — Teknik Informatika", "STMIK Mardira Indonesia"],
   skills: [
     "Web Development",
     "Front-End Development",
@@ -51,7 +51,7 @@ const BOOT_SEQUENCE = [
   "$ whoami",
   "muhammad-nur-ikhsan",
   "$ echo $ROLE",
-  "Web Developer â€” Laravel & Modern Frontend",
+  "Web Developer — Laravel & Modern Frontend",
   "",
   "Ketik 'help' untuk melihat daftar perintah.",
 ];
@@ -170,7 +170,7 @@ export function HeroTerminal() {
       className="w-full max-w-md border border-hairline bg-surface-card font-mono text-sm overflow-hidden"
       onClick={() => inputRef.current?.focus()}
       role="group"
-      aria-label="Terminal interaktif â€” ketik 'help' untuk daftar perintah"
+      aria-label="Terminal interaktif — ketik 'help' untuk daftar perintah"
     >
       <div className="flex items-center gap-2 px-4 py-3 border-b border-hairline">
         <span className="w-3 h-3 rounded-full bg-red-500" aria-hidden="true" />

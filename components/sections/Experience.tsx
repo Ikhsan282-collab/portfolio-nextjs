@@ -66,7 +66,7 @@ export function Experience() {
                             className="flex gap-3 text-body font-light leading-relaxed"
                           >
                             <span className="text-m-blue-text shrink-0" aria-hidden="true">
-                              â€”
+                              —
                             </span>
                             <span>{point}</span>
                           </li>

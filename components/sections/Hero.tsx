@@ -8,15 +8,15 @@ export function Hero() {
     <section className="min-h-screen flex items-center bg-canvas pt-16">
       <div className="max-w-[1440px] mx-auto px-6 py-16 w-full grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <Reveal direction="left">
+          <Reveal direction="left" immediate duration={0.3}>
             <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
               WEB DEVELOPER
             </p>
 
             <h1 className="text-5xl md:text-6xl lg:text-[72px] leading-none mb-6">
-              <TextReveal text="MUHAMMAD" delay={0.1} />
+              <TextReveal text="MUHAMMAD" delay={0.02} staggerDelay={0.02} duration={0.2} immediate />
               <br />
-              <TextReveal text="NUR IKHSAN" delay={0.25} />
+              <TextReveal text="NUR IKHSAN" delay={0.1} staggerDelay={0.02} duration={0.2} immediate />
             </h1>
 
             <p className="text-base font-light text-body max-w-xl mb-10 leading-relaxed">
@@ -24,7 +24,7 @@ export function Hero() {
             </p>
           </Reveal>
 
-          <Reveal direction="left" delay={0.4}>
+          <Reveal direction="left" delay={0.2} duration={0.3} immediate>
             <div className="flex flex-col sm:flex-row gap-4">
               
               <a  href="#projects"
@@ -45,7 +45,7 @@ export function Hero() {
           <div className="m-stripe-divider w-24 mt-16" />
         </div>
 
-        <Reveal direction="right" delay={0.2}>
+        <Reveal direction="right" delay={0.15} duration={0.3} immediate>
           <HeroTerminal />
         </Reveal>
       </div>

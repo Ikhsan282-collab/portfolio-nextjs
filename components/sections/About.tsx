@@ -26,13 +26,13 @@ const highlights = [
     icon: Globe,
     text: "Web Development & Laravel",
     detail:
-      "Terbiasa membangun aplikasi full-stack â€” dari struktur database, REST API, hingga antarmuka yang responsif.",
+      "Terbiasa membangun aplikasi full-stack — dari struktur database, REST API, hingga antarmuka yang responsif.",
   },
   {
     icon: Palette,
     text: "UI/UX Enthusiast",
     detail:
-      "Percaya bahwa kode yang bagus harus dibarengi antarmuka yang intuitif â€” selalu memperhatikan detail spacing, tipografi, dan alur pengguna.",
+      "Percaya bahwa kode yang bagus harus dibarengi antarmuka yang intuitif — selalu memperhatikan detail spacing, tipografi, dan alur pengguna.",
   },
 ];
 

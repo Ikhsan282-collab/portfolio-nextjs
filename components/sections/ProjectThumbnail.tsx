@@ -9,7 +9,7 @@ interface ProjectThumbnailProps {
   objectPosition?: "center" | "top" | "bottom";
 }
 
-// Ambil 2 huruf pertama dari tiap kata judul, maksimal 2 kata â€”
+// Ambil 2 huruf pertama dari tiap kata judul, maksimal 2 kata —
 // dipakai sebagai fallback visual kalau thumbnail belum tersedia.
 function getInitials(title: string) {
   return title

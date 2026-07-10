@@ -7,6 +7,9 @@ interface TextRevealProps {
   className?: string;
   delay?: number;
   staggerDelay?: number;
+  duration?: number;
+  /** Sama seperti Reveal: jalan langsung saat mount untuk konten atas fold. */
+  immediate?: boolean;
 }
 
 // Teks asli disediakan untuk screen reader lewat elemen sr-only terpisah
@@ -17,6 +20,8 @@ export function TextReveal({
   className,
   delay = 0,
   staggerDelay = 0.06,
+  duration = 0.4,
+  immediate = false,
 }: TextRevealProps) {
   const words = text.split(" ");
   const prefersReducedMotion = useReducedMotion();
@@ -40,9 +45,16 @@ export function TextReveal({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: "easeOut" },
+      transition: { duration, ease: "easeOut" },
     },
   };
+
+  const trigger = immediate
+    ? { animate: "visible" as const }
+    : {
+        whileInView: "visible" as const,
+        viewport: { once: true, margin: "-80px" },
+      };
 
   return (
     <span className={className}>
@@ -51,8 +63,7 @@ export function TextReveal({
         aria-hidden="true"
         variants={container}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
+        {...trigger}
       >
         {words.map((word, index) => (
           <motion.span
