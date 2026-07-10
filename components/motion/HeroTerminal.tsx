@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
@@ -21,8 +21,8 @@ const COMMANDS: Record<string, string[]> = {
     "  contact      cara menghubungi saya",
     "  clear        bersihkan layar",
   ],
-  whoami: ["muhammad-nur-ikhsan", "Web Developer — Laravel & Modern Frontend"],
-  role: ["Fresh Graduate — Teknik Informatika", "STMIK Mardira Indonesia"],
+  whoami: ["muhammad-nur-ikhsan", "Web Developer â€” Laravel & Modern Frontend"],
+  role: ["Fresh Graduate â€” Teknik Informatika", "STMIK Mardira Indonesia"],
   skills: [
     "Web Development",
     "Front-End Development",
@@ -30,20 +30,20 @@ const COMMANDS: Record<string, string[]> = {
     "Software Architecture",
   ],
   stack: [
-    "Laravel · PHP · MySQL",
-    "JavaScript · HTML · CSS",
-    "React · Next.js · Tailwind CSS",
+    "Laravel Â· PHP Â· MySQL",
+    "JavaScript Â· HTML Â· CSS",
+    "React Â· Next.js Â· Tailwind CSS",
   ],
   experience: [
     "Programmer @ PT Dcistem Cyber Internasional",
-    "→ Company profile, landing page, sistem pemesanan WiFi",
+    "â†’ Company profile, landing page, sistem pemesanan WiFi",
   ],
-  projects: ["Membuka daftar project...", "→ ketik: open projects"],
-  contact: ["Form kontak tersedia di bagian bawah halaman.", "→ ketik: open contact"],
+  projects: ["Membuka daftar project...", "â†’ ketik: open projects"],
+  contact: ["Form kontak tersedia di bagian bawah halaman.", "â†’ ketik: open contact"],
 };
 
 const EASTER_EGGS: Record<string, string[]> = {
-  "sudo hire-me": ["Permission granted. ✅", "Redirecting recruiter to #contact..."],
+  "sudo hire-me": ["Permission granted. âœ…", "Redirecting recruiter to #contact..."],
   "rm -rf bugs": ["Nice try. Bugs are permanent, like this joke."],
 };
 
@@ -51,7 +51,7 @@ const BOOT_SEQUENCE = [
   "$ whoami",
   "muhammad-nur-ikhsan",
   "$ echo $ROLE",
-  "Web Developer — Laravel & Modern Frontend",
+  "Web Developer â€” Laravel & Modern Frontend",
   "",
   "Ketik 'help' untuk melihat daftar perintah.",
 ];
@@ -87,7 +87,7 @@ export function HeroTerminal() {
     async function boot() {
       for (const line of BOOT_SEQUENCE) {
         if (cancelled) return;
-        await new Promise((resolve) => setTimeout(resolve, 350));
+        await new Promise((resolve) => setTimeout(resolve, 150));
         setLines((prev) => [...prev, { id: nextId(), type: "output", text: line }]);
       }
       if (!cancelled) setBooted(true);
@@ -117,12 +117,12 @@ export function HeroTerminal() {
     }
     if (command === "open projects") {
       document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-      setLines((prev) => [...prev, { id: nextId(), type: "output", text: "→ scrolling to #projects" }]);
+      setLines((prev) => [...prev, { id: nextId(), type: "output", text: "â†’ scrolling to #projects" }]);
       return;
     }
     if (command === "open contact") {
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-      setLines((prev) => [...prev, { id: nextId(), type: "output", text: "→ scrolling to #contact" }]);
+      setLines((prev) => [...prev, { id: nextId(), type: "output", text: "â†’ scrolling to #contact" }]);
       return;
     }
 
@@ -170,7 +170,7 @@ export function HeroTerminal() {
       className="w-full max-w-md border border-hairline bg-surface-card font-mono text-sm overflow-hidden"
       onClick={() => inputRef.current?.focus()}
       role="group"
-      aria-label="Terminal interaktif — ketik 'help' untuk daftar perintah"
+      aria-label="Terminal interaktif â€” ketik 'help' untuk daftar perintah"
     >
       <div className="flex items-center gap-2 px-4 py-3 border-b border-hairline">
         <span className="w-3 h-3 rounded-full bg-red-500" aria-hidden="true" />

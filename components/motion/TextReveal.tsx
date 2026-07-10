@@ -9,17 +9,16 @@ interface TextRevealProps {
   staggerDelay?: number;
 }
 
-// Membelah teks jadi per-huruf, dianimasikan dengan orkestrasi
-// staggerChildren (satu animasi induk mengatur semua anak) dan
-// baru berjalan saat section masuk viewport (whileInView),
-// bukan langsung saat komponen mount.
+// Dipecah per-kata (bukan per-huruf) supaya jumlah elemen animasi
+// jauh lebih sedikit -- lebih ringan di main thread, tapi visualnya
+// tetap terasa "reveal" yang halus.
 export function TextReveal({
   text,
   className,
   delay = 0,
-  staggerDelay = 0.03,
+  staggerDelay = 0.06,
 }: TextRevealProps) {
-  const letters = text.split("");
+  const words = text.split(" ");
   const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) {
@@ -58,14 +57,15 @@ export function TextReveal({
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
     >
-      {letters.map((letter, index) => (
+      {words.map((word, index) => (
         <motion.span
-          key={`${letter}-${index}`}
+          key={`${word}-${index}`}
           aria-hidden="true"
           variants={child}
           style={{ display: "inline-block" }}
         >
-          {letter === " " ? "\u00A0" : letter}
+          {word}
+          {index < words.length - 1 ? "\u00A0" : ""}
         </motion.span>
       ))}
     </motion.span>
