@@ -114,4 +114,30 @@ export const projects: Project[] = [
   githubUrl: "https://github.com/Ikhsan282-collab/sistem-informasi-kos",
   liveUrl: undefined,
 },
+  {
+  slug: "smart-boarding-house-management-system",
+  title: "Smart Boarding House Management System (SBHMS)",
+  description:
+    "Sistem manajemen kost berbasis web dan mobile yang mencakup manajemen kamar, booking online, pembayaran, komplain, hingga laporan keuangan — dibangun ulang dari aplikasi desktop lama (Java Swing) menjadi arsitektur client-server modern.",
+  features: [
+    "Autentikasi & manajemen role (Admin, Manajer Kost, Penyewa)",
+    "Manajemen kost & kamar, termasuk upload foto",
+    "Booking online dengan approval admin",
+    "Pembayaran dengan upload bukti transfer & verifikasi admin",
+    "Modul komplain dengan tracking status",
+    "Laporan keuangan (pendapatan, pengeluaran, laba rugi) dengan export PDF/Excel",
+    "Notifikasi WhatsApp untuk booking, pembayaran, dan komplain",
+    "Chat real-time dengan typing indicator & read receipt",
+  ],
+  techStack: ["Java Spring Boot", "React", "TypeScript", "Flutter", "MySQL", "JWT"],
+  role: "Full Stack Developer (Solo Project) — merancang dan membangun backend REST API, frontend web, dan aplikasi mobile dari nol.",
+  challenges:
+    "Migrasi sistem lama dari aplikasi desktop Java Swing menjadi arsitektur client-server modern yang mendukung banyak pengguna secara bersamaan, sekaligus menjaga konsistensi bisnis proses lama sambil merancang ulang struktur database dan REST API agar scalable dan mudah dikembangkan lebih lanjut.",
+  solutions:
+    "Menerapkan Clean Architecture di backend Spring Boot dengan pemisahan Service Layer yang jelas, membangun REST API yang konsisten untuk dikonsumsi oleh frontend web (React) maupun aplikasi mobile (Flutter), serta mengintegrasikan notifikasi WhatsApp pihak ketiga untuk meningkatkan pengalaman pengguna.",
+  thumbnail: "/images/projects/sbms-thumb.png",
+  screenshots: [],
+  githubUrl: "https://github.com/Ikhsan282-collab/Smart_Boarding_House_Management_System",
+  liveUrl: undefined,
+},
 ];
