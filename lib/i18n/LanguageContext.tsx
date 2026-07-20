@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { Language, translations } from "./translations";
@@ -6,7 +6,7 @@ import { Language, translations } from "./translations";
 interface LanguageContextValue {
   language: Language;
   toggleLanguage: () => void;
-  t: typeof translations["id"];
+  t: (typeof translations)[Language];
 }
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
