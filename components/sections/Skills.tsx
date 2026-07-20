@@ -6,8 +6,10 @@ import { skillCategories } from "@/lib/data/skills";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { TextReveal } from "@/components/motion/TextReveal";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function Skills() {
+  const { t } = useLanguage();
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
@@ -15,10 +17,10 @@ export function Skills() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
-            WHAT I WORK WITH
+            {t.skills.label}
           </p>
           <h2 className="text-4xl md:text-5xl mb-16">
-            <TextReveal text="SKILLS" delay={0.1} />
+            <TextReveal text={t.skills.heading} delay={0.1} immediate />
           </h2>
         </Reveal>
 
@@ -74,7 +76,7 @@ export function Skills() {
 
                     {/* Indikator kecil supaya user tahu card ini bisa diklik */}
                     <span className="mt-4 flex items-center gap-1 text-xs font-bold tracking-[1px] text-m-blue-text/70">
-                      {isOpen ? "TUTUP" : "DETAIL"}
+                      {isOpen ? t.skills.close : t.skills.detail}
                       <motion.span
                         animate={{ rotate: isOpen ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
@@ -94,7 +96,7 @@ export function Skills() {
                         className="overflow-hidden"
                       >
                         <p className="px-6 pb-6 text-sm font-light text-body/80 leading-relaxed border-t border-hairline pt-4">
-                          {category.description}
+                          {t.skills.descriptions[category.title as keyof typeof t.skills.descriptions]}
                         </p>
                       </motion.div>
                     )}

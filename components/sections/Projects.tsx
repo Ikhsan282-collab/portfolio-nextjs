@@ -7,8 +7,10 @@ import { ProjectCard } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
 import { Reveal } from "@/components/motion/Reveal";
 import { TextReveal } from "@/components/motion/TextReveal";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function Projects() {
+  const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
@@ -16,10 +18,10 @@ export function Projects() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
-            MY WORK
+            {t.projects.label}
           </p>
           <h2 className="text-4xl md:text-5xl mb-16">
-            <TextReveal text="PROJECTS" delay={0.1} />
+            <TextReveal text={t.projects.heading} delay={0.1} immediate />
           </h2>
         </Reveal>
 

@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "@/components/motion/Reveal";
 import { TextReveal } from "@/components/motion/TextReveal";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -67,6 +68,7 @@ function FloatingField({
 }
 
 export function Contact() {
+  const { t } = useLanguage();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errors, setErrors] = useState<Record<string, string[]>>({});
   const [errorMessage, setErrorMessage] = useState("");
@@ -98,7 +100,7 @@ export function Contact() {
 
       if (!res.ok) {
         if (result.errors) setErrors(result.errors);
-        setErrorMessage(result.message || "Terjadi kesalahan");
+        setErrorMessage(result.message || t.contact.genericError);
         setStatus("error");
         return;
       }
@@ -107,7 +109,7 @@ export function Contact() {
       form.reset();
       setMessageLength(0);
     } catch {
-      setErrorMessage("Gagal terhubung ke server. Cek koneksi kamu.");
+      setErrorMessage(t.contact.connectionError);
       setStatus("error");
     }
   }
@@ -117,14 +119,13 @@ export function Contact() {
       <div className="max-w-2xl mx-auto">
         <Reveal>
           <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
-            GET IN TOUCH
+            {t.contact.label}
           </p>
           <h2 className="text-4xl md:text-5xl mb-4">
-            <TextReveal text="HUBUNGI SAYA" delay={0.1} />
+            <TextReveal text={t.contact.heading} delay={0.1} />
           </h2>
           <p className="text-body font-light mb-12">
-            Ada peluang kerja atau ingin diskusi project. Kirim pesan lewat form
-            di bawah.
+            {t.contact.description}
           </p>
         </Reveal>
 
@@ -160,15 +161,15 @@ export function Contact() {
                   />
                 </motion.svg>
               </motion.div>
-              <p className="text-lg font-bold mb-2">PESAN TERKIRIM</p>
+              <p className="text-lg font-bold mb-2">{t.contact.successTitle}</p>
               <p className="text-body font-light">
-                Terima kasih, saya akan membalas secepatnya.
+                {t.contact.successBody}
               </p>
               <button
                 onClick={() => setStatus("idle")}
                 className="mt-6 text-sm font-bold tracking-[1.5px] text-body hover:text-on-dark transition-colors"
               >
-                KIRIM PESAN LAIN
+                {t.contact.sendAnother}
               </button>
             </motion.div>
           ) : (
@@ -185,7 +186,7 @@ export function Contact() {
                 <FloatingField
                   id="name"
                   name="name"
-                  label="NAMA"
+                  label={t.contact.name}
                   disabled={status === "loading"}
                   error={errors.name?.[0]}
                 />
@@ -195,7 +196,7 @@ export function Contact() {
                 <FloatingField
                   id="email"
                   name="email"
-                  label="EMAIL"
+                  label={t.contact.email}
                   type="email"
                   disabled={status === "loading"}
                   error={errors.email?.[0]}
@@ -206,7 +207,7 @@ export function Contact() {
                 <FloatingField
                   id="subject"
                   name="subject"
-                  label="SUBJEK"
+                  label={t.contact.subject}
                   disabled={status === "loading"}
                   error={errors.subject?.[0]}
                 />
@@ -231,7 +232,7 @@ export function Contact() {
                       peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-light peer-placeholder-shown:text-body-muted
                       peer-focus:top-2 peer-focus:text-xs peer-focus:tracking-[1.5px] peer-focus:font-bold peer-focus:text-m-blue-text"
                   >
-                    PESAN
+                    {t.contact.message}
                   </label>
                   <span
                     className="absolute left-0 bottom-0 h-[2px] bg-m-blue-dark w-full origin-left scale-x-0 peer-focus:scale-x-100 transition-transform duration-300 ease-out"
@@ -289,10 +290,10 @@ export function Contact() {
                         transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
                         className="w-4 h-4 border-2 border-current border-t-transparent rounded-full"
                       />
-                      MENGIRIM...
+                      {t.contact.sending}
                     </>
                   ) : (
-                    "KIRIM PESAN"
+                    t.contact.send
                   )}
                 </button>
               </Reveal>

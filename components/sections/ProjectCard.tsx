@@ -1,7 +1,9 @@
-﻿import { Project } from "@/lib/types";
+"use client";
+import { Project } from "@/lib/types";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { ProjectThumbnail } from "./ProjectThumbnail";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 type ProjectCardProps = {
   project: Project;
@@ -11,6 +13,7 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, onSelect, delay = 0, index = 0 }: ProjectCardProps) {
+  const { t, language } = useLanguage();
   const direction = index % 2 === 0 ? "left" : "right";
 
   return (
@@ -22,16 +25,14 @@ export function ProjectCard({ project, onSelect, delay = 0, index = 0 }: Project
         >
           <ProjectThumbnail
             src={project.thumbnail}
-            alt={project.title}
+            alt={project.title[language]}
             className="aspect-video mb-4 border-b border-hairline overflow-hidden"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-
           <div className="p-6 pt-0">
             <h3 className="text-lg font-bold mb-2 group-hover:text-m-blue-text transition-colors">
-              {project.title}
+              {project.title[language]}
             </h3>
-
             <div className="flex flex-wrap gap-2 mb-4">
               {project.techStack.slice(0, 3).map((tech) => (
                 <span
@@ -42,11 +43,10 @@ export function ProjectCard({ project, onSelect, delay = 0, index = 0 }: Project
                 </span>
               ))}
             </div>
-
             <span className="text-xs font-bold tracking-[1.5px] text-m-blue-text inline-flex items-center gap-1">
-              LIHAT DETAIL
+              {t.projects.viewDetail}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
-                →
+                {String.fromCharCode(8594)}
               </span>
             </span>
           </div>

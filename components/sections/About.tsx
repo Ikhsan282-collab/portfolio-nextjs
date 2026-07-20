@@ -8,35 +8,13 @@ import { Reveal } from "@/components/motion/Reveal";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { CV_PATH, CV_FILENAME } from "@/lib/constants";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const highlights = [
-  {
-    icon: GraduationCap,
-    text: "Fresh Graduate Teknik Informatika",
-    detail:
-      "Lulus dari STMIK Mardira Indonesia dengan fokus pada konsentrasi Sistem Informasi dan pengembangan aplikasi web modern.",
-  },
-  {
-    icon: Briefcase,
-    text: "Programmer at PT Dcistem Cyber Internasional",
-    detail:
-      "Terlibat dalam pengembangan company profile, landing page, dan sistem pemesanan layanan WiFi menggunakan Laravel.",
-  },
-  {
-    icon: Globe,
-    text: "Web Development & Laravel",
-    detail:
-      "Terbiasa membangun aplikasi full-stack — dari struktur database, REST API, hingga antarmuka yang responsif.",
-  },
-  {
-    icon: Palette,
-    text: "UI/UX Enthusiast",
-    detail:
-      "Percaya bahwa kode yang bagus harus dibarengi antarmuka yang intuitif — selalu memperhatikan detail spacing, tipografi, dan alur pengguna.",
-  },
-];
+const HIGHLIGHT_ICONS = [GraduationCap, Briefcase, Globe, Palette];
+const HIGHLIGHT_KEYS = ["education", "work", "web", "design"] as const;
 
 export function About() {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
@@ -61,29 +39,23 @@ export function About() {
         <Reveal direction="right">
           <div>
             <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
-              ABOUT ME
+              {t.about.label}
             </p>
             <h2 className="text-4xl md:text-5xl mb-6">
-              <TextReveal text="TENTANG SAYA" delay={0.15} />
+              <TextReveal text={t.about.heading} delay={0.15} immediate />
             </h2>
 
             <p className="text-body font-light leading-relaxed mb-10">
-              Fresh Graduate Teknik Informatika dari STMIK Mardira Indonesia
-              dengan pengalaman mengembangkan aplikasi web menggunakan Laravel,
-              PHP, MySQL, HTML, CSS, dan JavaScript. Pernah berkontribusi dalam
-              pengembangan website company profile, landing page, dan sistem
-              pemesanan layanan WiFi di PT Dcistem Cyber Internasional. Memiliki
-              minat pada Web Development, Front-End Development, dan UI/UX
-              Design, serta berkomitmen membangun aplikasi yang responsif,
-              mudah digunakan, dan memberikan solusi bagi kebutuhan pengguna.
+              {t.about.description}
             </p>
 
             <ul className="space-y-2 mb-10">
-              {highlights.map((item, index) => {
+              {HIGHLIGHT_KEYS.map((key, index) => {
                 const isOpen = activeIndex === index;
-                const Icon = item.icon;
+                const Icon = HIGHLIGHT_ICONS[index];
+                const item = t.about.highlights[key];
                 return (
-                  <li key={item.text} className="border-b border-hairline last:border-b-0">
+                  <li key={key} className="border-b border-hairline last:border-b-0">
                     <button
                       type="button"
                       onClick={() => setActiveIndex(isOpen ? null : index)}
@@ -133,7 +105,7 @@ export function About() {
               download={CV_FILENAME}
               className="inline-block border border-on-dark px-8 py-4 text-sm font-bold tracking-[1.5px] transition-all duration-300 hover:bg-on-dark hover:text-canvas hover:scale-[1.02]"
             >
-              DOWNLOAD CV
+              {t.about.downloadCV}
             </a>
           </div>
         </Reveal>
@@ -141,3 +113,4 @@ export function About() {
     </section>
   );
 }
+

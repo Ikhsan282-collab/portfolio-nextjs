@@ -1,6 +1,9 @@
-﻿import { education } from "@/lib/data/education";
+"use client";
+
+import { education } from "@/lib/data/education";
 import { Reveal } from "@/components/motion/Reveal";
 import { TextReveal } from "@/components/motion/TextReveal";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 function getInitials(name: string) {
   return name
@@ -12,15 +15,17 @@ function getInitials(name: string) {
 }
 
 export function Education() {
+  const { t, language } = useLanguage();
+
   return (
     <section id="education" className="bg-canvas py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <Reveal>
           <p className="text-sm font-bold tracking-[1.5px] text-m-blue-text mb-4">
-            EDUCATION
+            {t.education.label}
           </p>
           <h2 className="text-4xl md:text-5xl mb-16">
-            <TextReveal text="PENDIDIKAN" delay={0.1} />
+            <TextReveal text={t.education.heading} delay={0.1} />
           </h2>
         </Reveal>
 
@@ -33,14 +38,14 @@ export function Education() {
               <div className="flex flex-col md:flex-row md:flex-1 md:justify-between md:items-baseline gap-1">
                 <h3 className="text-2xl font-bold">{education.institution}</h3>
                 <span className="text-xs font-bold tracking-[1.5px] text-m-blue-text shrink-0">
-                  {education.period}
+                  {education.period[language]}
                 </span>
               </div>
             </div>
 
             <div className="pl-16">
-              <p className="text-lg font-light mb-3">{education.degree}</p>
-              <p className="text-body font-light">{education.status}</p>
+              <p className="text-lg font-light mb-3">{education.degree[language]}</p>
+              <p className="text-body font-light">{education.status[language]}</p>
             </div>
           </div>
         </Reveal>

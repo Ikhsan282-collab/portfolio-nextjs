@@ -1,10 +1,11 @@
-﻿"use client";
+"use client";
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "@/lib/types";
 import { ProjectThumbnail } from "./ProjectThumbnail";
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 type ProjectModalProps = {
   project: Project | null;
@@ -12,6 +13,8 @@ type ProjectModalProps = {
 };
 
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const { t, language } = useLanguage();
+
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
@@ -42,42 +45,42 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             exit={{ opacity: 0, scale: 0.96, y: 16 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
+            <div className="relative -mx-8 -mt-8 mb-6 border-b border-hairline overflow-hidden bg-surface-card">
+              <Image
+                src={project.thumbnail ?? ""}
+                alt={project.title[language]}
+                width={1200}
+                height={0}
+                style={{ width: "100%", height: "auto" }}
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="object-contain"
+              />
+            </div>
 
-          <div className="relative -mx-8 -mt-8 mb-6 border-b border-hairline overflow-hidden bg-surface-card">
-            <Image
-              src={project.thumbnail ?? ""}
-              alt={project.title}
-              width={1200}
-              height={0}
-              style={{ width: "100%", height: "auto" }}
-              sizes="(max-width: 768px) 100vw, 672px"
-              className="object-contain"
-            />
-          </div>
             <div className="flex justify-between items-start mb-6">
               <h3 id="project-modal-title" className="text-2xl font-bold">
-                {project.title}
+                {project.title[language]}
               </h3>
               <button
                 onClick={onClose}
                 aria-label="Tutup detail project"
                 className="text-sm font-bold tracking-[1.5px] transition-colors hover:text-m-blue-text"
               >
-                TUTUP ✕
+                {t.projects.close} {String.fromCharCode(10005)}
               </button>
             </div>
 
             <p className="text-body font-light leading-relaxed mb-8">
-              {project.description}
+              {project.description[language]}
             </p>
 
-            {project.features.length > 0 && (
+            {project.features[language].length > 0 && (
               <div className="mb-8">
                 <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-3">
-                  FITUR
+                  {t.projects.features}
                 </h4>
                 <ul className="list-disc list-inside space-y-1 text-body font-light">
-                  {project.features.map((feature) => (
+                  {project.features[language].map((feature) => (
                     <li key={feature}>{feature}</li>
                   ))}
                 </ul>
@@ -86,7 +89,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             <div className="mb-8">
               <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-3">
-                TECH STACK
+                {t.projects.techStack}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map((tech) => (
@@ -102,41 +105,41 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             <div className="mb-8">
               <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-3">
-                PERAN SAYA
+                {t.projects.myRole}
               </h4>
-              <p className="text-body font-light">{project.role}</p>
+              <p className="text-body font-light">{project.role[language]}</p>
             </div>
 
-            {project.challenges && (
+            {project.challenges[language] && (
               <div className="mb-8">
                 <h4 className="text-xs font-bold tracking-[1.5px] text-m-blue-text mb-3">
-                  TANTANGAN & SOLUSI
+                  {t.projects.challengesSolutions}
                 </h4>
-                <p className="text-body font-light mb-2">{project.challenges}</p>
-                <p className="text-body font-light">{project.solutions}</p>
+                <p className="text-body font-light mb-2">{project.challenges[language]}</p>
+                <p className="text-body font-light">{project.solutions[language]}</p>
               </div>
             )}
 
             {(project.githubUrl || project.liveUrl) && (
               <div className="flex gap-4 pt-4 border-t border-hairline">
                 {project.githubUrl && (
-                  
-                  <a  href={project.githubUrl}
+                  <a
+                    href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="border border-on-dark px-6 py-3 text-sm font-bold tracking-[1.5px] transition-all duration-300 hover:bg-on-dark hover:text-canvas hover:scale-[1.02]"
                   >
-                    GITHUB
+                    {t.projects.github}
                   </a>
                 )}
                 {project.liveUrl && (
-                  
-                   <a href={project.liveUrl}
+                  <a
+                    href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="border border-on-dark px-6 py-3 text-sm font-bold tracking-[1.5px] transition-all duration-300 hover:bg-on-dark hover:text-canvas hover:scale-[1.02]"
                   >
-                    LIVE DEMO
+                    {t.projects.liveDemo}
                   </a>
                 )}
               </div>

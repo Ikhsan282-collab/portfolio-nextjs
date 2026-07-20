@@ -1,27 +1,25 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { NAV_LINKS } from "@/lib/constants";
-// hapus definisi `const navLinks = [...]` yang lama,
-// lalu ganti semua pemakaian `navLinks` → `NAV_LINKS` di file itu
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
-];
+const NAV_KEYS = [
+  { key: "about", href: "#about" },
+  { key: "skills", href: "#skills" },
+  { key: "projects", href: "#projects" },
+  { key: "experience", href: "#experience" },
+  { key: "education", href: "#education" },
+  { key: "contact", href: "#contact" },
+] as const;
 
 export function Navbar() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Border bawah muncul setelah scroll sedikit — sinyal visual halus
-  // bahwa nav sedang "mengambang" di atas konten, bukan animasi berat.
   useEffect(() => {
     function handleScroll() {
       setIsScrolled(window.scrollY > 8);
@@ -30,7 +28,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Cegah scroll body saat menu mobile terbuka
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
@@ -49,39 +46,39 @@ export function Navbar() {
       }`}
     >
       <nav className="max-w-[1440px] mx-auto h-full px-6 flex items-center justify-between">
-        
-        <a  href="#"
-          className="text-sm font-bold tracking-[1.5px] text-on-dark"
-        >
+        <a href="#" className="text-sm font-bold tracking-[1.5px] text-on-dark">
           M. NUR IKHSAN
         </a>
 
-        {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              
-              <a  href={link.href}
-                className="text-sm font-light text-body tracking-[0.5px] transition-colors hover:text-on-dark"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center gap-8">
+          <ul className="flex items-center gap-8">
+            {NAV_KEYS.map((link) => (
+              <li key={link.href}>
+                
+                 <a href={link.href}
+                  className="text-sm font-light text-body tracking-[0.5px] transition-colors hover:text-on-dark"
+                >
+                  {t.nav[link.key]}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <LanguageSwitcher />
+        </div>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setIsOpen(true)}
-          aria-label="Buka menu navigasi"
-          aria-expanded={isOpen}
-          className="md:hidden text-on-dark"
-        >
-          <Menu className="w-6 h-6" strokeWidth={1.5} />
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <LanguageSwitcher />
+          <button
+            onClick={() => setIsOpen(true)}
+            aria-label="Buka menu navigasi"
+            aria-expanded={isOpen}
+            className="text-on-dark"
+          >
+            <Menu className="w-6 h-6" strokeWidth={1.5} />
+          </button>
+        </div>
       </nav>
 
-      {/* Mobile fullscreen overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -107,7 +104,7 @@ export function Navbar() {
             </div>
 
             <ul className="flex flex-col items-center justify-center gap-8 flex-1 h-[calc(100%-64px)]">
-              {navLinks.map((link, index) => (
+              {NAV_KEYS.map((link, index) => (
                 <motion.li
                   key={link.href}
                   initial={{ opacity: 0, y: 12 }}
@@ -119,7 +116,7 @@ export function Navbar() {
                     onClick={handleLinkClick}
                     className="text-2xl font-bold tracking-[1px] text-on-dark uppercase"
                   >
-                    {link.label}
+                    {t.nav[link.key]}
                   </a>
                 </motion.li>
               ))}
